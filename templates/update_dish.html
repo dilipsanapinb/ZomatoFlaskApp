@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+    
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+    
+        .update-dish-form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        .update-dish-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    
+        .update-dish-form input[type="text"],
+        .update-dish-form input[type="number"],
+        .update-dish-form select,
+        .update-dish-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    
+        .update-dish-form input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+    
+        .update-dish-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Update Dish - {{ dish['name'] }}</h2>
+    <form method="POST" action="/menu/update/{{ dish['id'] }}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ dish['name'] }}" required>
+        <br><br>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" value="{{ dish['price'] }}" step="0.01" required>
+        <br><br>
+        <label for="availability">Availability:</label>
+        <select id="availability" name="availability" required>
+            <option value="True" {% if dish['availability'] %}selected{% endif %}>Yes</option>
+            <option value="False" {% if not dish['availability'] %}selected{% endif %}>No</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Update Dish">
+    </form>
+
+</body>
+</html>

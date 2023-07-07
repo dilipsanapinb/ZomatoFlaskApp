@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <style>
+        /* Add your desired CSS styles here */
+        /* Example styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .order-table th,
+        .order-table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .order-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Orders</h1>
+    {% if orders %}
+    <table class="order-table">
+        <tr>
+            <th>Order ID</th>
+            <th>Customer Name</th>
+            <th>Dish IDs</th>
+            <th>Status</th>
+            <th>Timestamp</th>
+            <th>Update Status</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order['id'] }}</td>
+            <td>{{ order['customer_name'] }}</td>
+            <td>{{ order['dish_ids']|join(', ') }}</td>
+            <td>{{ order['status'] }}</td>
+            <td>{{ order['timestamp'] }}</td>
+            <td><a class="update-link" href="/orders/update/{{ order['id'] }}"><button>Update Status</button></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No orders found.</p>
+    {% endif %}
+</body>
+
+</html>

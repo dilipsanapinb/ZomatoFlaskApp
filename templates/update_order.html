@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Order</title>
+    <style>
+        /* Add your desired CSS styles here */
+        /* Example styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .update-form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .update-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .update-form select,
+        .update-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .update-form input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .update-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="update-form">
+        <h2>Update Order - {{ order['id'] }}</h2>
+        <form method="POST" action="/orders/update/{{ order['id'] }}">
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                <option value="received" {% if order['status']=='received' %}selected{% endif %}>Received</option>
+                <option value="preparing" {% if order['status']=='preparing' %}selected{% endif %}>Preparing</option>
+                <option value="ready for pickup" {% if order['status']=='ready for pickup' %}selected{% endif %}>Ready
+                    for Pickup</option>
+                <option value="delivered" {% if order['status']=='delivered' %}selected{% endif %}>Delivered</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Update Order">
+        </form>
+    </div>
+</body>
+
+</html>

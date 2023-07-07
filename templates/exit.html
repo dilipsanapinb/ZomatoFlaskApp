@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exit</title>
+    <style>
+        /* Add your desired CSS styles here */
+        /* Example styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .exit-message {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .exit-message p {
+            margin-bottom: 10px;
+        }
+
+        .exit-message input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="exit-message">
+        <h2>Exit Operations</h2>
+        <p>Are you sure you want to exit? This will wind up the day's operations.</p>
+        <form method="POST" action="/exit">
+            <input type="submit" value="Exit">
+        </form>
+    </div>
+</body>
+
+</html>

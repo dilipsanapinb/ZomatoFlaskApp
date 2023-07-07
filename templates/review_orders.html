@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Orders</title>
+    <style>
+        /* Add your desired CSS styles here */
+        /* Example styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .order-card {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .order-card p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .order-card .order-details {
+            margin-top: 10px;
+        }
+
+        .order-card .order-details p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Review Orders</h1>
+    {% if orders %}
+    {% for order in orders %}
+    <div class="order-card">
+        <h2>Order ID: {{ order['id'] }}</h2>
+        <p>Customer Name: {{ order['customer_name'] }}</p>
+        <p>Status: {{ order['status'] }}</p>
+        <p>Timestamp: {{ order['timestamp'] }}</p>
+        <div class="order-details">
+            <h3>Dish IDs:</h3>
+            <ul>
+                {% for dish_id in order['dish_ids'] %}
+                <li>{{ dish_id }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>No orders found.</p>
+    {% endif %}
+</body>
+
+</html>

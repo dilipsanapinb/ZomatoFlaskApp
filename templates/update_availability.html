@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Availability</title>
+    <style>
+        /* Add your desired CSS styles here */
+        /* Example styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .update-form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .update-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .update-form input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .update-form input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .update-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="update-form">
+        <h2>Update Availability</h2>
+        <form method="POST" action="/menu/update_availability/{{ dish['id'] }}">
+            <label for="availability">Availability:</label>
+            <input type="radio" id="availability-yes" name="availability" value="True" {% if dish['availability']
+                %}checked{% endif %}>
+            <label for="availability-yes">Yes</label>
+            <input type="radio" id="availability-no" name="availability" value="False" {% if not dish['availability']
+                %}checked{% endif %}>
+            <label for="availability-no">No</label>
+            <br><br>
+            <input type="submit" value="Update Availability">
+        </form>
+    </div>
+</body>
+
+</html>
