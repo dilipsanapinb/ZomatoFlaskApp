@@ -160,6 +160,46 @@
         </form>
     </div>
 </div>
+<script>
+    // Get the modal element
+    const modal = document.getElementById('rating-modal');
+
+    // Get the close button element
+    const closeBtn = document.querySelector('.close');
+
+    // Get the rate button elements
+    const rateBtns = document.querySelectorAll('.rate-btn');
+
+    // Get the dish ID element inside the modal
+    const modalDishIdInput = document.getElementById('modal-dish-id');
+
+    // Add event listener to each rate button
+    rateBtns.forEach(rateBtn => {
+        rateBtn.addEventListener('click', function () {
+            // Get the dish ID from the rate button's data attribute
+            const dishId = this.dataset.dishId;
+
+            // Set the dish ID in the modal's dish ID input field
+            modalDishIdInput.value = dishId;
+
+            // Display the modal
+            modal.style.display = 'block';
+        });
+    });
+
+    // Add event listener to the close button
+    closeBtn.addEventListener('click', function () {
+        // Hide the modal
+        modal.style.display = 'none';
+    });
+
+    // Add event listener to close the modal when clicking outside the modal
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+</script>
     <script>
         const ratingContainer = document.querySelector('.rating-container');
         const ratingInputs = ratingContainer.querySelectorAll('input[type="radio"]');
