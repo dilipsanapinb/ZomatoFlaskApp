@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Order</title>
+    
+
     <style>
         /* Add your desired CSS styles here */
         /* Example styles */
@@ -72,6 +74,26 @@
             <input type="submit" value="Update Order">
         </form>
     </div>
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <script src="{{ url_for('static', filename='socket.io.js') }}"></script>
+    <script>
+        // Establish a connection with the Socket.IO server
+        var socket = io();
+
+
+        // Listen for the 'order_status_updated' event and handle the updates
+        socket.on('order_status_updated', function (data) {
+            // Extract the order ID and new status from the received data
+            var orderId = data.orderId;
+            var newStatus = data.newStatus;
+
+            // Update the order status in the user interface
+            var statusElement = document.getElementById('status-' + orderId);
+            if (statusElement) {
+                statusElement.innerText = newStatus;
+            }
+        });
+    </script>
 </body>
 
 </html>
